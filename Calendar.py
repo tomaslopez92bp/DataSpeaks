@@ -20,7 +20,7 @@ client = bigquery.Client(credentials=credentials)
 ####################################################################################
 
 # Define la referencia a tu tabla de BigQuery
-dataset_id = "ageless-math-320621.Calendar_prueba"
+dataset_id = "Calendar_prueba"
 table_id = "calendar_streamlit"
     
 def insert_data_to_bigquery(start_date, end_date, event):
