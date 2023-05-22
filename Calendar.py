@@ -23,6 +23,10 @@ dataset_id = "ageless-math-320621.Calendar_prueba"
 table_id = "calendar_streamlit"
     
 def insert_data_to_bigquery(start_date, end_date, event):
+    # Formatea las fechas como objetos de tipo date
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+    end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
+    
     # Crea el diccionario de datos a insertar
     data = [
         {
@@ -69,3 +73,4 @@ else:
     if st.button("Save Event"):
         # Guardar la información del evento en la base de datos o en un archivo
         process_data(start_date, end_date, event)
+        st.success('Los datos se han guardado correctamente en BigQuery.')
