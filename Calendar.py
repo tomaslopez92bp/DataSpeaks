@@ -4,8 +4,8 @@ import datetime
 from google.oauth2 import service_account
 from google.cloud import bigquery
 
-credentials = "/Users/Zeke/GitHub/DataSpeaks/GoogleCloudAccess.json"
-client = bigquery.Client.from_service_account_json(credentials)
+--credentials = "/Users/Zeke/GitHub/DataSpeaks/GoogleCloudAccess.json"
+--client = bigquery.Client.from_service_account_json(credentials)
 
 # Título de la aplicación
 st.title("Events Calendar - Data Speaks")
