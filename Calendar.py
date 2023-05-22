@@ -39,9 +39,9 @@ def insert_data_to_bigquery(start_date, end_date, event):
     errors = client.insert_rows(table_ref, data)
 
     if errors == []:
-        print("Los datos se insertaron correctamente en BigQuery.")
+        st.success("Los datos se insertaron correctamente en BigQuery.")
     else:
-        print("Ocurrieron errores al insertar los datos en BigQuery.") 
+        st.error("Ocurrieron errores al insertar los datos en BigQuery.")
 
         
 ####################################################################################
