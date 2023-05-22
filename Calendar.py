@@ -1,16 +1,8 @@
 ####################################################################################
-def process_data(start_date, end_date, event):
-    # Aquí va la lógica para procesar los datos ingresados por el usuario
-
-    # Llama a la función para insertar los datos en BigQuery
-    insert_data_to_bigquery(start_date, end_date, event)
-
-####################################################################################
 from google.oauth2 import service_account
 from google.cloud import bigquery
 import streamlit as st
 from datetime import datetime
-from datetime import date
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
@@ -23,7 +15,8 @@ client = bigquery.Client(credentials=credentials)
 # Define la referencia a tu tabla de BigQuery
 dataset_id = "ageless-math-320621.Calendar_prueba"
 table_id = "calendar_streamlit"
-    
+table_ref = f"{dataset_id}.{table_id}"
+
 def insert_data_to_bigquery(start_date, end_date, event):
     
     
@@ -37,7 +30,6 @@ def insert_data_to_bigquery(start_date, end_date, event):
     ]
 
     # Inserta los datos en la tabla de BigQuery
-    table_ref = client.dataset(dataset_id).table(table_id)
     errors = client.insert_rows(table_ref, data)
 
     if errors == []:
@@ -45,11 +37,16 @@ def insert_data_to_bigquery(start_date, end_date, event):
     else:
         st.error("Ocurrieron errores al insertar los datos en BigQuery.")
 
-        
 ####################################################################################
-import streamlit as st
-import pandas as pd
-import datetime
+def process_data(start_date, end_date, event):
+    # Convierte las fechas a formato DATE de BigQuery
+    start_date = datetime.strptime(start_date, "%Y-%m-%d").date()
+    end_date = datetime.strptime(end_date, "%Y-%m-%d").date()
+
+    # Llama a la función para insertar los datos en BigQuery
+    insert_data_to_bigquery(start_date, end_date, event)
+####################################################################################
+#STREAMLIT
 
 # Título de la aplicación
 st.title("Events Calendar - Data Speaks")
