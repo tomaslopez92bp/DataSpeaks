@@ -37,7 +37,7 @@ def insert_data_to_bigquery(start_date, end_date, event):
     ]
 
     # Inserta los datos en la tabla de BigQuery
-    table_ref = f"{dataset_id}.{table_id}"
+    table_ref = client.dataset(dataset_id).table(table_id)
     errors = client.insert_rows(table_ref, data)
 
     if errors == []:
