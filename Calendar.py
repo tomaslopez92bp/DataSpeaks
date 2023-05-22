@@ -60,7 +60,8 @@ st.title("Events Calendar - Data Speaks")
 st.subheader("Please enter the requested data and then press the save button")
 
 # Formulario para ingresar la información del evento
-start_date = st.date_input("Start Date", value=pd.to_datetime('today').date())
+start_date = st.date_input("Start Date")
+start_date = datetime.combine(start_date, datetime.min.time()).date()
 end_date = st.date_input("End Date", value=pd.to_datetime('today').date())
 event = st.text_input("Event", value='')
 
