@@ -13,12 +13,12 @@ from google.cloud import bigquery
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
-client = bigquery.Client.from_service_account_json(credentials)
+client = bigquery.Client()
 
 ####################################################################################
 
 # Define la referencia a tu tabla de BigQuery
-dataset_id = "Calendar_prueba."
+dataset_id = "ageless-math-320621.Calendar_prueba"
 table_id = "calendar_streamlit"
     
 def insert_data_to_bigquery(start_date, end_date, event):
