@@ -51,8 +51,6 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-table_ref = client.dataset(dataset_id).table(table_id)
-
 # Título de la aplicación
 st.title("Events Calendar - Data Speaks")
 
