@@ -26,15 +26,12 @@ table_id = "calendar_streamlit"
     
 def insert_data_to_bigquery(start_date, end_date, event):
     
-    # Convierte los valores de fecha a cadenas en formato "YYYY-MM-DD"
-    start_date_str = start_date.strftime("%Y-%m-%d")
-    end_date_str = end_date.strftime("%Y-%m-%d")
     
     # Crea el diccionario de datos a insertar
     data = [
         {
-            "start_date": start_date_str,
-            "end_date": end_date_str,
+            "start_date": start_date,
+            "end_date": end_date,
             "event": event
         }
     ]
@@ -64,7 +61,7 @@ st.subheader("Please enter the requested data and then press the save button")
 
 # Formulario para ingresar la información del evento
 start_date = st.date_input("Start Date")
-end_date = st.date_input("End Date", value=pd.to_datetime('today').date())
+end_date = st.date_input("Start Date")
 event = st.text_input("Event", value='')
 
 # Validación de los valores ingresados por el usuario
