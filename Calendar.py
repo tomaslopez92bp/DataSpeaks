@@ -39,9 +39,6 @@ def insert_data_to_bigquery(start_date, end_date, event):
 
 ####################################################################################
 def process_data(start_date, end_date, event):
-    # Convierte las fechas a formato DATE de BigQuery
-    start_date = datetime.strptime(start_date, "%Y-%m-%d").date()
-    end_date = datetime.strptime(end_date, "%Y-%m-%d").date()
 
     # Llama a la función para insertar los datos en BigQuery
     insert_data_to_bigquery(start_date, end_date, event)
