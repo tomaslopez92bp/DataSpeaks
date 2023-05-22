@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import datetime
+google-cloud-bigquery==3.9.0
 from google.oauth2 import service_account
 from google.cloud import bigquery
 
