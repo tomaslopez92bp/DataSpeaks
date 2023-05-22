@@ -1,9 +1,25 @@
+####################################################################################
 def process_data(start_date, end_date, event):
     # Aquí va la lógica para procesar los datos ingresados por el usuario
 
     # Llama a la función para insertar los datos en BigQuery
     insert_data_to_bigquery(start_date, end_date, event)
 
+####################################################################################
+from google.oauth2 import service_account
+from google.cloud import bigquery
+
+# Create API client.
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+client = bigquery.Client()
+
+####################################################################################
+
+# Define la referencia a tu tabla de BigQuery
+dataset_id = "Calendar_prueba."
+table_id = "calendar_streamlit"
     
 def insert_data_to_bigquery(start_date, end_date, event):
     # Crea el diccionario de datos a insertar
@@ -23,21 +39,12 @@ def insert_data_to_bigquery(start_date, end_date, event):
     else:
         print("Ocurrieron errores al insertar los datos en BigQuery.") 
 
+        
+####################################################################################
 import streamlit as st
 import pandas as pd
 import datetime
-from google.oauth2 import service_account
-from google.cloud import bigquery
 
-# Create API client.
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"]
-)
-client = bigquery.Client()
-
-# Define la referencia a tu tabla de BigQuery
-dataset_id = "Calendar_prueba."
-table_id = "calendar_streamlit"
 table_ref = client.dataset(dataset_id).table(table_id)
 
 # Título de la aplicación
