@@ -13,7 +13,7 @@ client = bigquery.Client(credentials=credentials)
 ####################################################################################
 
 # Define la referencia a tu tabla de BigQuery
-dataset_id = "Calendar_prueba"
+dataset_id = "ageless-math-320621.Calendar_prueba"
 table_id = "calendar_streamlit"
 table_ref = f"{dataset_id}.{table_id}"
 
