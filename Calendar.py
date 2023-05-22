@@ -6,7 +6,7 @@ from google.cloud import bigquery
 
 import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_account.Credentials.from_service_account_info(
-    st.secrets["service_account"]
+    st.secrets["gcp_service_account"]
 )
 client = bigquery.Client()
 
