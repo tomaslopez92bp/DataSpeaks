@@ -1,3 +1,28 @@
+def process_data(start_date, end_date, event):
+    # Aquí va la lógica para procesar los datos ingresados por el usuario
+
+    # Llama a la función para insertar los datos en BigQuery
+    insert_data_to_bigquery(start_date, end_date, event)
+
+    
+def insert_data_to_bigquery(start_date, end_date, event):
+    # Crea el diccionario de datos a insertar
+    data = [
+        {
+            "start_date": start_date,
+            "end_date": end_date,
+            "event": event
+        }
+    ]
+
+    # Inserta los datos en la tabla de BigQuery
+    errors = client.insert_rows(table_ref, data)
+
+    if errors == []:
+        print("Los datos se insertaron correctamente en BigQuery.")
+    else:
+        print("Ocurrieron errores al insertar los datos en BigQuery.") 
+
 import streamlit as st
 import pandas as pd
 import datetime
@@ -35,4 +60,4 @@ else:
     # Botón para guardar la información del evento
     if st.button("Save Event"):
         # Guardar la información del evento en la base de datos o en un archivo
-        st.success("Event saved successfully!")
+        process_data(start_date, end_date, event)
