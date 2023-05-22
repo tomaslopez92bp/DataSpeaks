@@ -10,6 +10,7 @@ from google.oauth2 import service_account
 from google.cloud import bigquery
 import streamlit as st
 from datetime import datetime
+from datetime import date
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
@@ -25,6 +26,7 @@ table_id = "calendar_streamlit"
     
 def insert_data_to_bigquery(start_date, end_date, event):
     
+    start_date = date(year, month, day)
     # Crea el diccionario de datos a insertar
     data = [
         {
