@@ -61,7 +61,7 @@ st.subheader("Please enter the requested data and then press the save button")
 
 # Formulario para ingresar la información del evento
 start_date = st.date_input("Start Date")
-end_date = st.date_input("Start Date")
+end_date = st.date_input("End Date")
 event = st.text_input("Event", value='')
 
 # Validación de los valores ingresados por el usuario
