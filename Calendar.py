@@ -10,6 +10,11 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 client = bigquery.Client()
 
+# Define la referencia a tu tabla de BigQuery
+dataset_id = "Calendar_prueba."
+table_id = "calendar_streamlit"
+table_ref = client.dataset(dataset_id).table(table_id)
+
 # Título de la aplicación
 st.title("Events Calendar - Data Speaks")
 
